@@ -18,7 +18,7 @@ const routes = [
 function App() {
 
   return (
-    <BrowserRouter basename={import.meta.env.DEV ? '/' : '/julie_store/'}>
+    <BrowserRouter>
       <UserStorage>
         <Routes>
           <Route path="/" element={<Login />} />
