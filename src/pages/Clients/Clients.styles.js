@@ -15,7 +15,7 @@ export const ClientCard = styled.div`
     gap: 1rem;
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 425px) {
     grid-template-columns: 1fr;
   }
 `;

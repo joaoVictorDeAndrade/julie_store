@@ -82,12 +82,12 @@ export default function Clients() {
 
               <div>
                 <label>CPF: </label>
-                <h4>{formatCPF(client.cpf)}</h4>
+                <h4>{formatCPF(client.cpf) || 'Não Informado'}</h4>
               </div>
 
               <div>
                 <label>Celular: </label>
-                <h4>{formatPhone(client.cellphone)}</h4>
+                <h4>{formatPhone(client.cellphone) || 'Não Informado'}</h4>
               </div>
 
               <Button

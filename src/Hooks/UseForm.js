@@ -31,13 +31,17 @@ const useForm = (type, isRequired = true) => {
   const [error, setError] = React.useState(null);
 
   function validate(value) {
-    if (!type && !isRequired) return true;
+    if (!type && !isRequired) {
+      setError(null);
+      return true;
+    }
 
     if (type && !isRequired) {
       if (value && !types[type].isValid(value)) {
         setError(types[type].message);
         return false;
       }
+      setError(null);
       return true;
     }
 

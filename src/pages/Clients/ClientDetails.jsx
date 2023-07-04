@@ -20,7 +20,7 @@ export default function ClientDetails() {
   const navigate = useNavigate()
 
   const name = useForm("name");
-  const cpf = useForm("cpf");
+  const cpf = useForm("cpf", false);
   const birthdate = useForm('birthdate');
   const phone = useForm('phone', false);
   const cellphone = useForm('cellphone', !phone.value);
