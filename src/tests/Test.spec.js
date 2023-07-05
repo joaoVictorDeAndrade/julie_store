@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Test from "../pages/Test";
 
 describe("Test", () => {
@@ -33,5 +34,19 @@ describe("Test", () => {
 
         expect(input.value).toBe('John Doe');
     })
+
+    it('should update the name state when typing in the input with userEvent', async () => {
+        // Faz o setup para utilizar o userEvent
+        const user = userEvent.setup()
+
+        render(<Test />);
+
+        const input = screen.getByPlaceholderText('Name:');
+
+        // Simular a digitação de um nome usando userEvent
+        await user.type(input, 'John Doe');
+
+        expect(input.value).toBe('John Doe');
+    });
 })
 
