@@ -24,7 +24,7 @@ const emptyClient = {
   complement: ''
 }
 
-export async function getClients(field = "name", maxQuery = 10) {
+export async function getClients(field = "name", maxQuery = 100) {
   try {
     const first = query(clientsRef, orderBy(field), limit(maxQuery));
     const { docs } = await getDocs(first);
