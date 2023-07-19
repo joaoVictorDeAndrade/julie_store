@@ -8,6 +8,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getClientByID, postClient, putClient, getClientByCPF } from "../../services/clients";
 import { isMobile, patternNameOnFirebase } from '../../helpers';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import useForm from "../../Hooks/UseForm";
 
 let nameInputStyle = {}
@@ -72,7 +75,6 @@ export default function ClientDetails() {
     else resetForm()
   }, []);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -111,9 +113,20 @@ export default function ClientDetails() {
         navigate(`/clientes/detalhes/${docId}`)
       }
 
+      toast.success('Cliente salvo com sucesso!', {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+        theme: 'colored'
+      });
+
 
     } catch (error) {
       console.log(error);
+      toast.error('Algo deu errado!', {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+        theme: 'colored'
+      });
     }
   };
 
@@ -136,6 +149,8 @@ export default function ClientDetails() {
   return (
     <Container>
       <>
+        <ToastContainer />
+
         <Title text={clientId ? "Editar Cliente" : "Adicionar Cliente"} />
         <ClientForm>
           <Title fontSize="1.25rem" text={"Dados Pessoais"} />
