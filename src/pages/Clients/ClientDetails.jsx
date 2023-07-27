@@ -1,6 +1,7 @@
 import Container from "../../components/Container/Container";
 import Title from "../../components/Title/Title";
 import Input from "../../components/Input/Input";
+import Select from "../../components/Select/Select";
 import Button from "../../components/Button/Button";
 import { ClientForm, PersonalData, AddressData } from "./Clients.styles";
 
@@ -14,6 +15,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import useForm from "../../Hooks/UseForm";
 
 let nameInputStyle = {}
+const sexArray = [
+  { value: 'MASCULINO', label: 'Masculino' },
+  { value: 'FEMININO', label: 'Feminino' },
+  { value: 'OUTRO', label: 'Outro' }
+]
 
 if (!isMobile()) nameInputStyle = { gridColumn: '1 / 3' }
 
@@ -33,6 +39,7 @@ export default function ClientDetails() {
   const neighborhood = useForm("neighborhood");
   const city = useForm("city");
   const [loading, setLoading] = useState(false);
+  const [sex, setSex] = useState('MASCULINO')
 
   const resetForm = () => {
     name.setValue('');
@@ -62,6 +69,7 @@ export default function ClientDetails() {
         complement.setValue(response.complement);
         neighborhood.setValue(response.neighborhood);
         city.setValue(response.city);
+        setSex(response.sex)
       }
       catch (error) {
         console.log(error)
@@ -88,7 +96,11 @@ export default function ClientDetails() {
 
       const response = await getClientByCPF(cpf.value);
       if (response.cpf && !clientId) {
-        console.log('ESSE CPF JA ESTA CADASTRADO!');
+        toast.error('Esse CPF já está cadastrado!', {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 3000,
+          theme: 'colored'
+        });
         return;
       }
 
@@ -103,7 +115,8 @@ export default function ClientDetails() {
         complement: complement.value,
         neighborhood: neighborhood.value,
         city: city.value,
-        searchPatternName: patternNameOnFirebase(name.value)
+        searchPatternName: patternNameOnFirebase(name.value),
+        sex
       }
 
       if (clientId) {
@@ -156,6 +169,14 @@ export default function ClientDetails() {
           <Title fontSize="1.25rem" text={"Dados Pessoais"} />
           <PersonalData>
             {personalData.map((input, key) => (<Input key={key} {...input} />))}
+
+            <Select
+              options={sexArray}
+              value={sex}
+              onChange={({ target }) => setSex(target.value)}
+              label="Sexo"
+            />
+
           </PersonalData>
 
           <Title fontSize="1.25rem" text={"Endereço"} />
