@@ -42,7 +42,7 @@ export async function postClient(newClient) {
     const docRef = await addDoc(collection(db, "clients"), newClient);
     return docRef.id;
   } catch (error) {
-    console.error(error);
+    throw Error(error)
   }
 }
 
@@ -51,7 +51,7 @@ export async function putClient(docId, newClient) {
     const docRef = doc(clientsRef, docId);
     await updateDoc(docRef, newClient);
   } catch (error) {
-    console.log(error)
+    throw Error(error)
   }
 }
 

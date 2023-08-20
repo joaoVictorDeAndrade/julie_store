@@ -12,6 +12,7 @@ export const Header = styled.header`
   padding: 0px 2rem;
   position: fixed;
   margin-bottom: 5rem;
+  z-index: 999;
 `;
 
 export const Button = styled.button`

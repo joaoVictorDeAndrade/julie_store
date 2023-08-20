@@ -1,27 +1,83 @@
-import { useEffect, useState } from 'react'
 import { VictoryPie } from 'victory'
 
-import { GraphWrapper } from './ClientsStatsGraphs.styles'
+import { GraphContainer, GraphWrapper } from './ClientsStatsGraphs.styles'
 
-export default function ClientsStatsGraphs({ data }) {
-    const [sexData, setSexData] = useState([]);
-
-    useEffect(() => {
-
-    }, [data])
+export default function ClientsStatsGraphs({ genders }) {
 
     return (
-        <GraphWrapper>
-            <VictoryPie
-                style={{ maxWidth: '400px' }}
-                data={
-                    [
-                        { x: 'Masculino', y: 20 },
-                        { x: 'Feminino', y: 32 },
-                        { x: 'Outros', y: 3 }
-                    ]
-                }
-            />
-        </GraphWrapper>
+        <GraphContainer>
+            <GraphWrapper>
+                <VictoryPie
+                    data={
+                        [
+                            { x: 'Masculino', y: genders.MASCULINO },
+                            { x: 'Feminino', y: genders.FEMININO },
+                            { x: 'Outros', y: genders.OUTRO }
+                        ]
+                    }
+                    padding={{ left: 80, right: 80 }}
+                    style={{
+                        data: {
+                            fillOpacity: 0.9,
+                            stroke: "#FFF",
+                            strokeWidth: 1.5
+                        },
+                        labels: {
+                            fontSize: 14,
+                            fill: "#333"
+                        }
+                    }}
+                />
+            </GraphWrapper>
+
+            <GraphWrapper >
+                <VictoryPie
+                    data={
+                        [
+                            { x: 'Masculino', y: genders.MASCULINO },
+                            { x: 'Feminino', y: genders.FEMININO },
+                            { x: 'Outros', y: genders.OUTRO }
+                        ]
+                    }
+                    padding={{ left: 80, right: 80 }}
+                    style={{
+                        data: {
+                            fillOpacity: 0.9,
+                            stroke: "#FFF",
+                            strokeWidth: 1.5
+                        },
+                        labels: {
+                            fontSize: 14,
+                            fill: "#333"
+                        }
+                    }}
+                />
+            </GraphWrapper>
+
+            <GraphWrapper style={{ height: '300px' }} >
+                <VictoryPie
+                    data={
+                        [
+                            { x: 'Masculino', y: genders.MASCULINO },
+                            { x: 'Feminino', y: genders.FEMININO },
+                            { x: 'Outros', y: genders.OUTRO }
+                        ]
+                    }
+                    padding={{ left: 80, right: 80 }}
+                    style={{
+                        data: {
+                            fillOpacity: 0.9,
+                            stroke: "#FFF",
+                            strokeWidth: 1.5
+                        },
+                        labels: {
+                            fontSize: 14,
+                            fill: "#333"
+                        }
+                    }}
+                />
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis rerum quam voluptate eum, corporis eius nisi numquam assumenda ex mollitia quas voluptates error consectetur? Rem reprehenderit consectetur aperiam odio autem.</p>
+            </GraphWrapper>
+        </GraphContainer >
     )
 }
