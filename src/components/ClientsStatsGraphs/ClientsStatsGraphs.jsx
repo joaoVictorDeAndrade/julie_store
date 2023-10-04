@@ -30,6 +30,8 @@ export default function ClientsStatsGraphs({ genders }) {
                 />
             </GraphWrapper>
 
+            <p style={{ alignSelf: 'center' }} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sed soluta eligendi. Possimus est saepe nostrum, assumenda alias nemo, sapiente odio iste dolor consequuntur accusantium placeat exercitationem laboriosam quam totam?</p>
+
             <GraphWrapper >
                 <VictoryPie
                     data={
@@ -54,7 +56,10 @@ export default function ClientsStatsGraphs({ genders }) {
                 />
             </GraphWrapper>
 
-            <GraphWrapper style={{ height: '300px' }} >
+            <p style={{ alignSelf: 'center' }} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sed soluta eligendi. Possimus est saepe nostrum, assumenda alias nemo, sapiente odio iste dolor consequuntur accusantium placeat exercitationem laboriosam quam totam?</p>
+
+
+            <GraphWrapper style={{ gridColumn: '1 / 5', maxHeight: '250px' }} >
                 <VictoryPie
                     data={
                         [
@@ -76,7 +81,6 @@ export default function ClientsStatsGraphs({ genders }) {
                         }
                     }}
                 />
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis rerum quam voluptate eum, corporis eius nisi numquam assumenda ex mollitia quas voluptates error consectetur? Rem reprehenderit consectetur aperiam odio autem.</p>
             </GraphWrapper>
         </GraphContainer >
     )
