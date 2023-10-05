@@ -7,12 +7,17 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import Clients from "./pages/Clients/Clients";
 import ClientDetails from "./pages/Clients/ClientDetails";
+import Products from "./pages/Products/Products";
+import ProductDetails from "./pages/Products/ProductDetails";
 
 const routes = [
   { path: "/dashboard", component: <Dashboard /> },
   { path: "/clientes", component: <Clients /> },
   { path: "/clientes/adicionar", component: <ClientDetails /> },
   { path: "/clientes/detalhes/:id", component: <ClientDetails /> },
+  { path: "/produtos", component: <Products /> },
+  { path: "/produtos/adicionar", component: <ProductDetails /> },
+  { path: "/produtos/detalhes/:id", component: <ProductDetails /> },
 ];
 
 function App() {
